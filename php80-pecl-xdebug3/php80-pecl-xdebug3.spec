@@ -43,6 +43,7 @@ BuildRequires:  make
 BuildRequires:  php-xml >= 8.0
 BuildRequires:  php-common >= 8.0
 BuildRequires:  php-devel >= 7.2
+BuildRequires:  php-process >= 8.0
 BuildRequires:  php-pear
 BuildRequires:  php-simplexml
 BuildRequires:  libtool
