@@ -1,0 +1,67 @@
+From 5b525dafa6aa759801832c5fd10c3734c5dde808 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Tue, 20 Oct 2020 09:42:14 +0200
+Subject: [PATCH] promote error "Memcached constructor was not called" to
+ exception with PHP 8
+
+---
+ php_memcached.c            | 11 +++++++++++
+ tests/bad_construct_8.phpt | 12 +++++++-----
+ 2 files changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/php_memcached.c b/php_memcached.c
+index d49b7d5..1e218a0 100644
+--- a/php_memcached.c
++++ b/php_memcached.c
+@@ -195,6 +195,7 @@ static inline php_memc_object_t *php_memc_fetch_object(zend_object *obj) {
+ 	php_memc_object_t*     intern         = NULL;      \
+ 	php_memc_user_data_t*  memc_user_data = NULL;
+ 
++#if PHP_VERSION_ID < 80000
+ #define MEMC_METHOD_FETCH_OBJECT                                                      \
+ 	intern = Z_MEMC_OBJ_P(object);                                                    \
+ 	if (!intern->memc) {                                                              \
+@@ -203,6 +204,16 @@ static inline php_memc_object_t *php_memc_fetch_object(zend_object *obj) {
+ 	}                                                                                 \
+ 	memc_user_data = (php_memc_user_data_t *) memcached_get_user_data(intern->memc);  \
+ 	(void)memc_user_data; /* avoid unused variable warning */
++#else
++#define MEMC_METHOD_FETCH_OBJECT                                                      \
++	intern = Z_MEMC_OBJ_P(object);                                                    \
++	if (!intern->memc) {                                                              \
++		zend_throw_error(NULL, "Memcached constructor was not called");               \
++		RETURN_THROWS();                                                                       \
++	}                                                                                 \
++	memc_user_data = (php_memc_user_data_t *) memcached_get_user_data(intern->memc);  \
++	(void)memc_user_data; /* avoid unused variable warning */
++#endif
+ 
+ static
+ zend_bool s_memc_valid_key_binary(zend_string *key)
+diff --git a/tests/bad_construct_8.phpt b/tests/bad_construct_8.phpt
+index 81daa5a..10928cf 100644
+--- a/tests/bad_construct_8.phpt
++++ b/tests/bad_construct_8.phpt
+@@ -20,15 +20,17 @@ class extended extends Memcached {
+ }
+ 
+ error_reporting(E_ALL);
+-$extended = new extended ();
+-var_dump ($extended->setOption (Memcached::OPT_BINARY_PROTOCOL, true));
++try {
++	$extended = new extended ();
++	var_dump ($extended->setOption (Memcached::OPT_BINARY_PROTOCOL, true));
++} catch (Error $e) {
++	echo $e->getMessage() . PHP_EOL;
++}
+ 
+ echo "OK" . PHP_EOL;
+ 
+ --EXPECTF--
+ Memcached::__construct(): Argument #1 ($persistent_id) must be of type ?string, stdClass given
+-
+-Warning: Memcached::setOption(): Memcached constructor was not called in %s
+-NULL
++Memcached constructor was not called
+ OK
+ 

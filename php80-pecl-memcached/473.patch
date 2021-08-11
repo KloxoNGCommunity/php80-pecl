@@ -1,0 +1,37 @@
+From 74c0e38fa5eb8d37e7789f46b8f9cf4ed37cd375 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Mon, 18 Jan 2021 16:34:40 +0100
+Subject: [PATCH] missing header for inet_ntoa
+
+---
+ config.m4              | 2 ++
+ php_memcached_server.c | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/config.m4 b/config.m4
+index c7a15f1..b54a12d 100644
+--- a/config.m4
++++ b/config.m4
+@@ -392,6 +392,8 @@ if test "$PHP_MEMCACHED" != "no"; then
+ 
+     CFLAGS="$ORIG_CFLAGS"
+ 
++    AC_CHECK_HEADERS([arpa/inet.h])
++
+     export PKG_CONFIG_PATH="$ORIG_PKG_CONFIG_PATH"
+     PHP_SUBST(MEMCACHED_SHARED_LIBADD)
+ 
+diff --git a/php_memcached_server.c b/php_memcached_server.c
+index 870209c..83bd15e 100644
+--- a/php_memcached_server.c
++++ b/php_memcached_server.c
+@@ -17,6 +17,9 @@
+ #include "php_memcached.h"
+ #include "php_memcached_private.h"
+ #include "php_memcached_server.h"
++#if HAVE_ARPA_INET_H
++#include <arpa/inet.h>
++#endif
+ 
+ #include <event2/listener.h>
+ 
