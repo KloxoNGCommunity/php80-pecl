@@ -41,7 +41,6 @@ URL:            https://xdebug.org/
 
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  php >= 8.0
 BuildRequires:  php(language) >= 8.0
 BuildRequires:  php-xml >= 8.0
 BuildRequires:  php-common >= 8.0
