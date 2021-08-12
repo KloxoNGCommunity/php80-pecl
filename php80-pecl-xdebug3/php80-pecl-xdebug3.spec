@@ -27,7 +27,6 @@
 # XDebug should be loaded after opcache
 %global ini_name  15-%{pecl_name}.ini
 
-%global __requires_exclude ^php-common$
 
 Name:           php80-pecl-xdebug3
 Summary:        Provides functions for function traces and profiling
@@ -42,6 +41,7 @@ URL:            https://xdebug.org/
 
 BuildRequires:  gcc
 BuildRequires:  make
+BuildRequires:  php(language) > 8.0
 BuildRequires:  php-xml >= 8.0
 BuildRequires:  php-common >= 8.0
 BuildRequires:  php-devel >= 7.2
