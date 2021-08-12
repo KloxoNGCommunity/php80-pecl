@@ -25,7 +25,7 @@
 Summary: PHP Extension and Application Repository framework
 Name: pear1
 Version: 1.10.12
-Release: 1%{?dist}
+Release: 2%{?dist}
 Epoch: 1
 # PEAR, PEAR_Manpages, Archive_Tar, XML_Util, Console_Getopt are BSD
 # Structures_Graph is LGPLv3+
@@ -316,6 +316,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 1:1.10.12-2
+- adapted for KloxoNG
+
 * Mon Aug 03 2020 Carl George <carl@george.computer> - 1:1.10.12-1
 - Latest upstream
 - Import Fedora changes for bundled libraries:
