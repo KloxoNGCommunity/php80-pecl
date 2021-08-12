@@ -192,6 +192,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 	1.19.3-1
+- adapted for php80 on KloxoNG
+
 * Wed Aug 12 2020 Jeff Sheltren <jeff@sheltren.com> - 1.19.0-1
 - Update to 1.19.0
 

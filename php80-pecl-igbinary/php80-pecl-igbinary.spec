@@ -231,6 +231,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 3.2.4-1
+- adapted for php80 on KloxoNG
+
 * Wed Jun 10 2020 Carl George <carl@george.computer> - 3.1.2-1
 - Latest upstream
 - Add patch0 to fix failing test

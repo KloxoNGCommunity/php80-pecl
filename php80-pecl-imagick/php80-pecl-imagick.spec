@@ -225,6 +225,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 3.5.1-1
+- adapted for php80 on KloxoNG
+
 * Fri Jun 05 2020 David Alger <davidmalger@gmail.com> - 3.4.4-4
 - Port from Fedora to IUS
 

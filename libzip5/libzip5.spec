@@ -4,7 +4,7 @@
 
 Name:    libzip5
 Version: 1.7.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: C library for reading, creating, and modifying zip archives
 
 License: BSD
@@ -141,6 +141,9 @@ make check
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 	1.7.0-2
+- adapted for php80 on KloxoNG
+
 * Sat Jun 06 2020 Carl George <carl@george.computer> - 1.7.0-2
 - Initial libzip5 package based on Fedora's libzip
 

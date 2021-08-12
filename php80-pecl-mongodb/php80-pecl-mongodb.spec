@@ -26,7 +26,7 @@
 Summary:        MongoDB driver for PHP
 Name:           %{php}-pecl-%{pecl_name}
 Version:        1.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0
 URL:            https://pecl.php.net/package/%{pecl_name}
 Source0:        https://pecl.php.net/get/%{pecl_name}-%{version}.tgz
@@ -200,6 +200,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 1.9.1-2
+- adapted for php80 on KloxoNG 
+
 * Tue Jun  8 2021 Jeff Sheltren <jeff@tag1consulting.com> - 1.9.1-1
 - Update to 1.9.1 for php74
 

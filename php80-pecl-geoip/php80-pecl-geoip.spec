@@ -134,6 +134,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 1.1.1-10
+- adapted for php80 on KloxoNG
+
 * Wed Jun 12 2019 Carl George <carl@george.computer> - 1.1.1-10
 - Port from Fedora to IUS
 

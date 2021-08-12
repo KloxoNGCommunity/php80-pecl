@@ -22,7 +22,7 @@
 Summary:      Extension to work with the Memcached caching daemon
 Name:         %{php}-pecl-memcached
 Version:      3.1.5
-Release:      1%{?dist}
+Release:      2%{?dist}
 License:      PHP
 URL:          https://pecl.php.net/package/%{pecl_name}
 
@@ -288,6 +288,9 @@ fi
 
 
 %changelog
+* Thu Aug 12 2021 John Pierce <john@luckytanuki.com> - 3.1.5-2
+- adapted for php80 on KloxoNG
+
 * Thu Jun 18 2020 Jeff Sheltren <jeff@tag1consulting.com> - 3.1.5-1
 - Rebuild for PHP 7.4
 - Latest upstream
