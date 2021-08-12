@@ -52,6 +52,7 @@ BuildRequires:  php-simplexml
 BuildRequires:  libtool
 BuildRequires:  php-soap >= 8.0
 
+Requires:  		php(language) >= 8.0
 Requires:       php(zend-abi) = %{php_zend_api}
 Requires:       php(api) = %{php_core_api}
 
