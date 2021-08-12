@@ -44,7 +44,7 @@ BuildRequires:  make
 BuildRequires:  php(language) >= 8.0
 #BuildRequires:  php-xml >= 8.0
 #BuildRequires:  php-common >= 8.0
-#BuildRequires:  php-devel >= 8.0
+BuildRequires:  php-devel >= 8.0
 #BuildRequires:  php-process >= 8.0
 BuildRequires:  php-cli >= 8.0
 #BuildRequires:  php-pear
