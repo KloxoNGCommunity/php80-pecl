@@ -82,7 +82,8 @@ Provides: php-autoloader(pear/xml_util) = %{xmlutil}
 # XML_Util, Structures_Graph require 5.3
 # Console_Getopt requires 5.4
 # PEAR requires 5.4
-Requires:  php(language) > 5.4
+Requires:  php(language) >= 5.6
+Requires:  php-common >= 5.6
 Requires:  php-cli
 # phpci detected extension
 # PEAR (date, spl always builtin):
